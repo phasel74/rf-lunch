@@ -1,6 +1,7 @@
 [
     {
-        "name": "Kantine Schuler",
+        "title": "Kantine Schuler",
+        "id": "schuler",
         "logo": "schuler.png",
         "phoneNumber": null,
         "website": null,
@@ -20,7 +21,8 @@
         ]
     },
     {
-        "name": "Bäckerei Hausmann",
+        "title": "Bäckerei Hausmann",
+        "id": "hausmann",
         "logo": "baeckerei-hausmann.png",
         "phoneNumber": null,
         "website": "baeckerei-hausmann.de",
@@ -38,7 +40,8 @@
         ]
     },
     {
-        "name": "Asia Wok-In",
+        "title": "Asia Wok-In",
+        "id": "asia-wok-in",
         "logo": "asia-wok-in.jpg",
         "phoneNumber": "0751 506 91 93",
         "website": null,
@@ -49,7 +52,8 @@
         ]
     },
     {
-        "name": "Zur Post – indisches Restaurant",
+        "title": "Zur Post – indisches Restaurant",
+        "id": "inder",
         "logo": "post-amrit.png",
         "phoneNumber": "0751 52 57 5",
         "website": "zur-post-amrit.de",
@@ -60,7 +64,8 @@
         ]
     },
     {
-        "name": "Hotel Sonne",
+        "title": "Hotel Sonne",
+        "id": "sonne",
         "logo": "hotel-sonne.jpg",
         "phoneNumber": "0751 560 790",
         "website": "sonnehotel.de",
@@ -83,7 +88,8 @@
         ]
     },
     {
-        "name": "Café Museum",
+        "title": "Café Museum",
+        "id": "museum",
         "logo": "cafe-museum.jpg",
         "phoneNumber": "0751 58 58 8",
         "website": "cafemuseum.de",
@@ -98,7 +104,8 @@
         ]
     },
     {
-        "name": "Eiszeit Ravensburg",
+        "title": "Eiszeit Ravensburg",
+        "id": "eiszeit",
         "logo": "eiszeit.png",
         "phoneNumber": "0751 355 49 334",
         "website": "eiszeit-rv.de",
@@ -110,7 +117,8 @@
         ]
     },
     {
-        "name": "Pronto",
+        "title": "Pronto",
+        "id": "pronto",
         "logo": "pronto.png",
         "phoneNumber": "0751 977 86 998",
         "website": "pronto-weingarten.de",
@@ -124,7 +132,8 @@
         ]
     },
     {
-        "name": "Bosporus Weingarten",
+        "title": "Bosporus Weingarten",
+        "id": "bosporus",
         "logo": "bosporus.jpg",
         "phoneNumber": "0751 55 26 49",
         "website": null,
@@ -136,7 +145,8 @@
         ]
     },
     {
-        "name": "Asia Real",
+        "title": "asia-king",
+        "id": "Asia Real",
         "logo": "asia-king.jpg",
         "phoneNumber": "0751 561 90 70",
         "website": null,
@@ -149,7 +159,8 @@
         ]
     },
     {
-        "name": "Kantine KBZO",
+        "title": "Kantine KBZO",
+        "id": "kbzo",
         "logo": "kbzo.jpg",
         "phoneNumber": null,
         "website": null,
@@ -163,7 +174,8 @@
         ]
     },
     {
-        "name": "Subway",
+        "title": "Subway",
+        "id": "subway",
         "logo": "subway.png",
         "phoneNumber": null,
         "website": "subway.com/de-de",
@@ -175,7 +187,8 @@
         ]
     },
     {
-        "name": "La Margherita (Fontanella) – italienisches Restaurant",
+        "title": "La Margherita (Fontanella) – italienisches Restaurant",
+        "id": "margherita",
         "logo": "la-margherita.jpg",
         "phoneNumber": "0751 557 30 20",
         "website": "www.ristorante-la-margherita.de",
@@ -196,7 +209,8 @@
         ]
     },
     {
-        "name": "Fernostgarten (Asia Baienfurt)",
+        "title": "Fernostgarten (Asia Baienfurt)",
+        "id": "fernostgarten",
         "logo": "fernostgarten.jpg",
         "phoneNumber": "0751 557 64 30",
         "website": null,
@@ -209,7 +223,8 @@
         ]
     },
     {
-        "name": "Babu Döner Baienfurt",
+        "title": "Babu Döner Baienfurt",
+        "id": "babu",
         "logo": "babu.jpg",
         "phoneNumber": "0751 977 85 171",
         "website": null,
@@ -224,7 +239,8 @@
         ]
     },
     {
-        "name": "Shiva – indisch-pakistanisches Restaurant",
+        "title": "Shiva – indisch-pakistanisches Restaurant",
+        "id": "shiva",
         "logo": "shiva.png",
         "phoneNumber": "0751 55 28 59",
         "website": "shiva-weingarten.de",
@@ -238,7 +254,8 @@
         ]
     },
     {
-        "name": "Lindenhof",
+        "title": "Lindenhof",
+        "id": "lindenhof",
         "logo": "lindenhof.jpg",
         "phoneNumber": "0751 561 620",
         "website": "gasthaus-lindenhof.com",
@@ -251,7 +268,8 @@
         ]
     },
     {
-        "name": "Riggs Burger",
+        "title": "Riggs Burger",
+        "id": "riggs",
         "logo": "riggs-burger.jpg",
         "phoneNumber": "0751 270 888 000",
         "website": "riggs-burger.com",
@@ -264,7 +282,8 @@
         ]
     },
     {
-        "name": "Dalfino",
+        "title": "Dalfino",
+        "id": "dalfino",
         "logo": "dalfino.jpg",
         "phoneNumber": "0751 42 666",
         "website": "dalfino.de",
@@ -281,7 +300,8 @@
         ]
     },
     {
-        "name": "Kervan",
+        "title": "Kervan",
+        "id": "kervan",
         "logo": "kervan.jpg",
         "phoneNumber": "0751 55 28 80",
         "website": null,
@@ -295,7 +315,8 @@
         ]
     },
     {
-        "name": "Metzger Brenner",
+        "title": "Metzger Brenner",
+        "id": "brenner",
         "logo": "metzgerei-brenner.jpg",
         "phoneNumber": null,
         "website": "metzgerei-brenner.de",
