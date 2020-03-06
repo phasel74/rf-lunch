@@ -37,8 +37,10 @@ function makeHotelSonneDishes(html) {
       console.log(i + ": " + nodes[i].firstChild.data)
     }
     //*/
-    // dishes array
-    let dailyDishes = [];
+    // offers (daily dishes)
+    let offers = {
+        title: "Tagesessen"
+    };
     let iDay = 0; // current week day
     let dishName = null, dishPrice = null;
     for (let i = 0, n = nodes.length; i < n; ++i) {
@@ -71,9 +73,10 @@ function makeHotelSonneDishes(html) {
         }
         if (dishName == undefined || dishPrice == undefined) continue;
         // add dish
-        dailyDishes.push({
+        const day = util.weekdays[iDay + 1];
+        if (!offers[day]) offers[day] = [];
+        offers[day].push({
             name: dishName,
-            day: iDay + 1,
             price: dishPrice.replace("EUR", "").trim() + " €",
         })
         dishName = dishPrice = undefined;
@@ -88,6 +91,6 @@ function makeHotelSonneDishes(html) {
     return {
         dateStart: util.germanDateToInternational(dateString.substring(17, 27)),
         dateEnd: util.germanDateToInternational(dateString.substring(32, 42)),
-        dailyDishes: { title: "Tagesessen", arr: dailyDishes }
+        ...offers
     }
 }

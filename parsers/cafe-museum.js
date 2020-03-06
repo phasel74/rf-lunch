@@ -101,11 +101,25 @@ exports.parse = function () {
                 // trim dish name and remove duplicate white space
                 dailyDishes[i].name = dailyDishes[i].name.trim().replace(/\s+/g, " ")
             }
+            // @todo create offers object above directly
+            offers = {
+                title: "Tagesessen",
+                titleWeek: "Wochenessen"
+            }
+            for (let dish of dailyDishes) {
+                const day = util.weekdays[dish.day];
+                if (!offers[day]) offers[day] = [];
+                const dish2 = {}
+                if (dish.name) dish2.name = dish.name;
+                if (dish.price) dish2.price = dish.price;
+                offers[day].push(dish2);
+            }
+            offers["week"] = weekDishes.arr;
+
             resolve({
                 dateStart: util.germanDateToInternational(startDate),
                 dateEnd: util.germanDateToInternational(endDate),
-                dailyDishes: { title: "Tagesessen", arr: dailyDishes },
-                weekDishes: weekDishes
+                ...offers
             });
         });
     })

@@ -10,22 +10,25 @@ exports.parse = function () {
             result = result.replace(/<br ?\/?>\w*\r?\n/g, " ")
             // start and end date
             const headers = xpath.select("//tr[@class='first-row']/td", new dom().parseFromString(result))
-            const dateStart = headers[0].firstChild.data
-            const dateEnd = headers[headers.length - 2].firstChild.data
-            // dishes
+            const dateStart = util.germanDateToInternational(headers[0].firstChild.data)
+            const dateEnd = util.germanDateToInternational(headers[headers.length - 2].firstChild.data)
+            // offers (daily dishes)
             const rows = xpath.select("//tr[@class='follow-row']/td", new dom().parseFromString(result))
-            var dailyDishes = [];
+            var offers = {
+                title: "Mittagstisch – all you can eat"
+            };
             for (let i = 0; i < rows.length - 1; i += 2) {
                 if (rows[i + 1].firstChild == null) continue; // @todo? 
-                dailyDishes.push({
-                    name: rows[i].firstChild.data + ": " + rows[i + 1].firstChild.data,
-                    day: Math.floor(i / 8 + 1),
+                const day = util.weekdays[Math.floor(i / 8) + 1];
+                if (!offers[day]) offers[day] = [];
+                offers[day].push({
+                    name: rows[i].firstChild.data + ": " + rows[i + 1].firstChild.data
                 })
             }
             resolve({ 
-                dateStart: util.germanDateToInternational(dateStart),
-                dateEnd: util.germanDateToInternational(dateEnd),
-                dailyDishes: { title: "Mittagstisch", arr: dailyDishes }
+                dateStart: dateStart,
+                dateEnd: dateEnd,
+                ...offers
             })
         })
     })

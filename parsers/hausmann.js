@@ -4,10 +4,12 @@ const request = require('request'); // @todo deprecated??
 const xpath = require('xpath')
 const dom = require('xmldom').DOMParser
 
+const util = require('./util')
+
 exports.parse = function () {
     return new Promise((resolve, reject) => {
         // get json for Weingarten
-        request.get('https://baeckerei-hausmann.visuscreen.de/init/vins/Weingarten.json', {json: true}, (err, res, body) => {
+        request.get('https://baeckerei-hausmann.visuscreen.de/init/vins/Weingarten.json', { json: true }, (err, res, body) => {
             const feedpath = body[0].feedpath;
             const feedID = body[0].feedID;
             // get textfile with html
@@ -15,17 +17,17 @@ exports.parse = function () {
             //console.log(textfile);
 
             request.get(textfile, (err, res) => {
-                const dishes = parseBaeckereiHausmannHtml(res.body)
+                offers = parseBaeckereiHausmannHtml(res.body)
                 // date
                 date = new Date(res.headers['last-modified'])
                 nextMonday(date)
                 dateStart = date2Str(date)
                 date.setDate(date.getDate() + 4);
                 dateEnd = date2Str(date)
-                dishes.dateStart = dateStart
-                dishes.dateEnd = dateEnd
-                resolve(dishes)
-              });
+                offers.dateStart = dateStart
+                offers.dateEnd = dateEnd
+                resolve(offers)
+            });
         })
     })
 }
@@ -146,12 +148,27 @@ function parseBaeckereiHausmannHtml(html) {
     console.log("finalize ...................................................")
 
     const dishes_ = { // @todo name
-        //dateStart: dateStart,
-        //dateEnd: dateEnd, // @todo rename to expire?
+        dateStart: "",//dateStart,
+        dateEnd: "",//dateEnd, // @todo rename to expire?
         dailyDishes: { title: "Tagesessen", arr: dailyDishes },
         //weekDishes: weekDishes
     };
     console.log(dishes_);
     //res.json(dishes_);
-    return dishes_
+
+
+    // @todo create offers object above directly
+    offers = {
+        title: "Tagesessen"
+    }
+    for (let dish of dishes_.dailyDishes.arr) {
+        const day = util.weekdays[dish.day];
+        if (!offers[day]) offers[day] = [];
+        const dish2 = {}
+        if (dish.name) dish2.name = dish.name;
+        if (dish.price) dish2.price = dish.price;
+        offers[day].push(dish2);
+    }
+
+    return offers
 }

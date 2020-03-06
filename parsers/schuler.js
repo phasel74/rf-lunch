@@ -61,11 +61,30 @@ exports.parse = function () {
                     }
                 }
             }
+            // filter 'Hurra Feiertag!!!' etc.
             dishes = dishes.filter(e => e.name.indexOf("!") < 0)
+            // @todo create offers object above directly
+            offers = {
+                title: "Tagesessen"
+            }
+            for (let dish of dishes) {
+                const day = util.weekdays[dish.day];
+                if (!offers[day]) offers[day] = [];
+                const dish2 = {}
+                if (dish.name) dish2.name = dish.name;
+                if (dish.price) dish2.price = dish.price;
+                if (dish.garnish.name) {
+                    dish2.garnish = {
+                        name: dish.garnish.name
+                    }
+                    if (dish.garnish.price) dish2.garnish.price = dish.garnish.price
+                }
+                offers[day].push(dish2);
+            }
             resolve({
                 dateStart: util.germanDateToInternational(texts[2].text),
                 dateEnd: util.germanDateToInternational(texts[3].text),
-                dailyDishes: { title: "Speiseplan", arr: dishes }
+                ...offers
             });
         });
     })

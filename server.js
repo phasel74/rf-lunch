@@ -18,12 +18,10 @@ app.get('/api/providers', function (request, response) {
   response.sendFile(path.join(__dirname, 'providers.json'))
 });
 
-app.get('/api/dishes/:name', function (request, response) {
+app.get('/api/offers/:name', function (request, response) {
   var name = request.params.name;
-  //response.status(200).send('dishes api for ' + name);
-  parser.parse(name).then(dishes => {
-    // @todo check if dish1 is undefined / null / ??? (due to parse errors)
-    response.json(dishes)
+  parser.parse(name).then(offers => {
+    response.json(offers)
   }).catch(error => {
     console.log(error)
     res.send({ 'error': error }); // @todo?
