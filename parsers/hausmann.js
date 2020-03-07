@@ -21,12 +21,17 @@ exports.parse = function () {
                 // date
                 date = new Date(res.headers['last-modified'])
                 nextMonday(date)
-                dateStart = date2Str(date)
+                dateStart = date.toISOString()
                 date.setDate(date.getDate() + 4);
-                dateEnd = date2Str(date)
+                date.setHours(23, 59, 59)
+                dateEnd = date.toISOString()
                 offers.dateStart = dateStart
                 offers.dateEnd = dateEnd
-                resolve(offers)
+                resolve({
+                    dateStart: dateStart,
+                    dateEnd: dateEnd,
+                    offers: offers
+                })
             });
         })
     })
@@ -34,24 +39,6 @@ exports.parse = function () {
 
 function nextMonday(d) {
     d.setDate(d.getDate() + (1 + 7 - d.getDay()) % 7);
-}
-
-function date2Str(date) {
-    /* @todo German formatting?
-    var str = ""
-    str += (date.getDate() < 10 ? "0" : "") + date.getDate()
-    str += "."
-    str += (date.getMonth() < 9 ? "0" : "") + (date.getMonth() + 1)
-    str += "."
-    str += date.getFullYear()
-    */
-    var str = ""
-    str += date.getFullYear()
-    str += "-"
-    str += (date.getMonth() < 9 ? "0" : "") + (date.getMonth() + 1)
-    str += "-"
-    str += (date.getDate() < 10 ? "0" : "") + date.getDate()
-    return str
 }
 
 function parseBaeckereiHausmannHtml(html) {

@@ -25,7 +25,7 @@ function parse(name) {
         case "museum":
           cafe_museum.parse().then(resolve);
           break;
-        case "kbzo-kantine":
+        //case "kbzo-kantine":
         //case "kbzo":
         //kbzo.parse().then(resolve)
         //break;

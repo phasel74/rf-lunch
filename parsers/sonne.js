@@ -91,6 +91,6 @@ function makeHotelSonneDishes(html) {
     return {
         dateStart: util.germanDateToInternational(dateString.substring(17, 27)),
         dateEnd: util.germanDateToInternational(dateString.substring(32, 42)),
-        ...offers
+        offers: offers
     }
 }

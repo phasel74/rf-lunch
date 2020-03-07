@@ -12,6 +12,8 @@
     "pdf-parser": "^1.0.5",
     "restler": "^3.4.0",
     "request": "latest",
+    "sqlite3": "*",
+    "sequelize": "*",
     "xmldom": "^0.1.27",
     "xpath": "^0.0.27"
   },

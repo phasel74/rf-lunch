@@ -84,7 +84,7 @@ exports.parse = function () {
             resolve({
                 dateStart: util.germanDateToInternational(texts[2].text),
                 dateEnd: util.germanDateToInternational(texts[3].text),
-                ...offers
+                offers: offers
             });
         });
     })

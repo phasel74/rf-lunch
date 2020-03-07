@@ -119,7 +119,7 @@ exports.parse = function () {
             resolve({
                 dateStart: util.germanDateToInternational(startDate),
                 dateEnd: util.germanDateToInternational(endDate),
-                ...offers
+                offers: offers
             });
         });
     })

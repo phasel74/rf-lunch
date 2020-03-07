@@ -28,7 +28,7 @@ exports.parse = function () {
             resolve({ 
                 dateStart: dateStart,
                 dateEnd: dateEnd,
-                ...offers
+                offers: offers
             })
         })
     })
