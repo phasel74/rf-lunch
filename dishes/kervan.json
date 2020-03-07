@@ -1,0 +1,37 @@
+{
+    "carte": {
+        "title": "Flyer",
+        "pages": [
+            {
+                "src": "images/kervan1.jpg",
+                "thumbnail": "images/kervan1_thumb.jpg",
+                "caption": "Deckblatt",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/kervan2.jpg",
+                "thumbnail": "images/kervan2_thumb.jpg",
+                "caption": "Kebap / Lahmacun / Dürum / Pide / Calcone",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/kervan3.jpg",
+                "thumbnail": "images/kervan3_thumb.jpg",
+                "caption": "Pizza",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/kervan4.jpg",
+                "thumbnail": "images/kervan4_thumb.jpg",
+                "caption": "Pizza / Salat",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/kervan5.jpg",
+                "thumbnail": "images/kervan5_thumb.jpg",
+                "caption": "Salat",
+                "orientation": "landscape"
+            }
+        ]
+    }
+}

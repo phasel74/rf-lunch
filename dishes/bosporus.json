@@ -1,0 +1,19 @@
+{
+    "carte": {
+        "title": "Flyer",
+        "pages": [
+            {
+                "src": "images/bosporus1.jpg",
+                "thumbnail": "images/bosporus1_thumb.jpg",
+                "caption": "Gerichte",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/bosporus2.jpg",
+                "thumbnail": "images/bosporus2_thumb.jpg",
+                "caption": "Getränke",
+                "orientation": "landscape"
+            }
+        ]
+    }
+}

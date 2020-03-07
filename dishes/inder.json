@@ -1,0 +1,19 @@
+{
+    "carte": {
+        "title": "Mittagskarte",
+        "pages": [
+            {
+                "src": "images/post-amrit1.jpg",
+                "thumbnail": "images/post-amrit1_thumb.jpg",
+                "caption": "Mittagsmenüs",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/post-amrit2.jpg",
+                "thumbnail": "images/post-amrit2_thumb.jpg",
+                "caption": "Mittagskarte - sonstiges",
+                "orientation": "landscape"
+            }
+        ]
+    }
+}

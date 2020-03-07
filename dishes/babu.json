@@ -1,0 +1,13 @@
+{
+    "carte": {
+        "title": "Preise",
+        "pages": [
+            {
+                "src": "images/babu.jpg",
+                "thumbnail": "images/babu_thumb.jpg",
+                "caption": "Preise",
+                "orientation": "landscape"
+            }
+        ]
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "offers": {
+        "title": "Sub des Tages",
+        "monday": [
+            {
+                "name": "Italian B.M.T."
+            }
+        ],
+        "tuesday": [
+            {
+                "name": "Turkey & Ham"
+            }
+        ],
+        "wednesday": [
+            {
+                "name": "Turkey"
+            }
+        ],
+        "thursday": [
+            {
+                "name": "Chicken Fajita"
+            }
+        ],
+        "friday": [
+            {
+                "name": "Tuna"
+            }
+        ],
+        "saturday": [
+            {
+                "name": "BBQ Rib"
+            }
+        ],
+        "sunday": [
+            {
+                "name": "Chicken Breast"
+            }
+        ]
+    }
+}

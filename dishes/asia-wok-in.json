@@ -1,0 +1,19 @@
+{
+    "carte": {
+        "title": "Flyer",
+        "pages": [
+            {
+                "src": "images/asia-wok-in1.jpg",
+                "thumbnail": "images/asia-wok-in1_thumb.jpg",
+                "caption": "Deckblatt",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/asia-wok-In2.jpg",
+                "thumbnail": "images/asia-wok-in2_thumb.jpg",
+                "caption": "Gerichte",
+                "orientation": "landscape"
+            }
+        ]
+    }
+}

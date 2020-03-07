@@ -1,0 +1,19 @@
+{
+    "carte": {
+        "title": "Flyer",
+        "pages": [
+            {
+                "src": "images/asia-king1.jpg",
+                "thumbnail": "images/asia-king1_thumb.jpg",
+                "caption": "Deckblatt",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/asia-king2.jpg",
+                "thumbnail": "images/asia-king2_thumb.jpg",
+                "caption": "Gerichte",
+                "orientation": "landscape"
+            }
+        ]
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "carte": {
+        "title": "Flyer",
+        "pages": [
+            {
+                "src": "images/fernostgarten1.png",
+                "thumbnail": "images/fernostgarten1_thumb.png",
+                "caption": "Mittagsmenüs",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/fernostgarten2.png",
+                "thumbnail": "images/fernostgarten2_thumb.png",
+                "caption": "thailändisch / vietnamesisch",
+                "orientation": "landscape"
+            },
+            {
+                "src": "images/fernostgarten3.png",
+                "thumbnail": "images/fernostgarten3_thumb.png",
+                "caption": "vientnamesisch / chinesisch / mongolisch",
+                "orientation": "landscape"
+            }
+        ]
+    }
+}
