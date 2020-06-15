@@ -10,6 +10,10 @@ exports.parse = function () {
             result = result.replace(/<br ?\/?>\w*\r?\n/g, " ")
             // start and end date
             const headers = xpath.select("//tr[@class='first-row']/td", new dom().parseFromString(result))
+            if (headers[0] === undefined) {
+              resolve({ error: "eiszeit: could not parse html" })
+              return
+            }
             const dateStart = util.germanDateToInternational(headers[0].firstChild.data)
             const dateEnd = util.germanDateToInternational(headers[headers.length - 2].firstChild.data)
             // offers (daily dishes)

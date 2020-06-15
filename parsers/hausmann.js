@@ -42,17 +42,18 @@ function nextMonday(d) {
 }
 
 function parseBaeckereiHausmannHtml(html) {
-    const li = html.match(/(<li.*<\/li>)(<li.*<\/li>)/)
+    //const li = html.match(/(<li.*<\/li>)(<li.*<\/li>)/)
+    const li = html.match(/(<li.*<\/li>)/)
     if (li == null) return; // @todo error (for example no Mittagsdish in holidays)
     // look for "Wochenkarte1 Weingarten"
     const idx = li[1].substring(11, 37) === "Mittagstisch Weingarten - " ? 2 : 1
     // 
     const nodes = xpath.select("/li/div/@data-x", new dom().parseFromString(li[idx]))
-    days = [];
+    var days = [];
     for (let i = 0; i < 5; ++i) {
         days.push({ dishes: [], prices: [] })
     }
-    //console.log(nodes.length)
+    console.log(nodes.length)
     // test
     for (let i = 0; i < nodes.length; ++i) {
         //console.log("*********")
@@ -73,10 +74,11 @@ function parseBaeckereiHausmannHtml(html) {
         if (x > 50) iDay += 3
 
         if (!isPrice) {
-            let text = div3 && div3.childNodes ? div3.childNodes[0] : undefined
-            if (text) days[iDay].dishes.push({ y: y, text: text.nodeValue })
+            for (let j = 0; j < div3.childNodes.length; j += 2) {
+                let text = div3 && div3.childNodes ? div3.childNodes[j] : undefined
+                days[iDay].dishes.push({ y: y, text: text.nodeValue })
+            }
         } else {
-            if (!div3.childNodes) continue
             for (let j = 0; j < div3.childNodes.length; j += 2) {
                 let text = div3 && div3.childNodes ? div3.childNodes[j] : undefined
                 days[iDay].prices.push({ y: y, text: text.nodeValue })
@@ -91,8 +93,9 @@ function parseBaeckereiHausmannHtml(html) {
     // move prices to correct day @todo better description
     for (var iDay = 0; iDay < days.length - 1; ++iDay) {
         const day = days[iDay];
+        day.dishes = day.dishes.sort((a, b) => a.y - b.y)
         if (day.dishes.length > day.prices.length) {
-            console.log("ERROR: should not happen1!!")
+            console.log("ERROR: should not happen1!!") // feiertag?
         }
         if (day.dishes.length >= day.prices.length) continue
         const nextDay = days[iDay + 1]
@@ -124,7 +127,7 @@ function parseBaeckereiHausmannHtml(html) {
             dailyDishes.push({
                 name: dish.text,
                 day: iDay + 1,
-                price: price.text.replace("€", " €"),
+                price: price.text.replace(/\s*€/, " €"),
                 //garnish: { name: '', price: '' }
             })
         }

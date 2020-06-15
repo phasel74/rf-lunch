@@ -35,17 +35,17 @@ exports.parse = function () {
                 arr: [
                     {
                         name: weekDish1.replace(/der Woche!* */, "der Woche: ").trim(),
-                        price: weekPrice1 + " €"
+                        price: weekPrice1 + " €"
                     },
                     {
                         name: weekDish2.replace(/der Woche!* */, "der Woche: ").trim(),
-                        price: weekPrice2 + " €"
+                        price: weekPrice2 + " €"
                     }
                 ]
             }
 
-            dailyPrice1 += " €"
-            dailyPrice2 += " €"
+            dailyPrice1 += " €"
+            dailyPrice2 += " €"
 
             // initialize daily dishes array
             const nDays = 5, nDishes = 2;
