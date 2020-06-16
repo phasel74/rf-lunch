@@ -113,7 +113,7 @@ app.get('/api/dishes/:name', function (request, response) {
   Dishes.findOne({ where: { id: name } })
     .then(dishesDb => {
       if (dishesDb) {
-        // check if dishes are uptodate
+        // check if dishes are up-to-date
         const now = new Date();
         const dateEnd = new Date(dishesDb.dateEnd)
         if (now <= dateEnd) {
@@ -132,6 +132,21 @@ app.get('/api/dishes/:name', function (request, response) {
         // stringify objects @todo is there a better way to do that?
         dishesNew.offers = JSON.stringify(dishesNew.offers);
         dishesNew.carte = JSON.stringify(dishesNew.carte);
+        // still outdated
+        console.log(dishesNew.dateEnd)
+        console.log(new Date())
+        if (dishesNew.error !== undefined) {
+          Dishes.findOne({ where: { id: name } }).then(dishes_ => {
+            response.json({error: "parsed " + name + ": error!"})
+          })     
+          return
+        }
+        if (dishesNew.dateEnd < new Date().toISOString()) {
+          Dishes.findOne({ where: { id: name } }).then(dishes_ => {
+            response.json({ error: "parsed " + name + ": still outdated (" + dishesNew.dateStart + " - " + dishesNew.dateEnd + ")"})
+          })
+          return
+        }
         // insert or update database value
         Dishes.upsert(dishesNew).then(() => {
           // get inserted/updated value from db again 
@@ -139,10 +154,11 @@ app.get('/api/dishes/:name', function (request, response) {
           Dishes.findOne({ where: { id: name } }).then(dishes_ => {
             response.json(dishesStrToObj(dishes_))
           })
+          return
         })
       }).catch(error => {
-        console.log(error)
-        response.json({ 'error': error }); // @todo?
+        console.log(name + ": " + error)
+        response.json(error); // @todo?
       })
 })
 
