@@ -57,7 +57,9 @@
         "logo": "post-amrit.png",
         "phoneNumber": "0751 52 57 5",
         "website": "zur-post-amrit.de",
-        "infos": [],
+        "infos": [
+            "[Mittagskarte](https://zur-post-amrit.de/wp-content/uploads/2019/04/Mittagstisch_Amrit.pdf)"           
+        ],
         "keywords": [
             "Zur Post-Amrit",
             "Inder"
