@@ -8,14 +8,14 @@
   },
   "dependencies": {
     "cors": "latest",
-    "express": "^4.17.1",
-    "pdf-parser": "^1.0.5",
+    "express": "latest",
+    "pdf-parser": "latest",
     "request": "latest",
-    "restler": "^3.4.0",
+    "restler": "latest",
     "sequelize": "*",
     "sqlite3": "*",
-    "xmldom": "^0.1.27",
-    "xpath": "^0.0.27"
+    "xmldom": "latest",
+    "xpath": "latest"
   },
   "engines": {
     "node": "12.x"
