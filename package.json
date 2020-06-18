@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "cors": "latest",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "pdf-parser": "^1.0.5",
-    "restler": "^3.4.0",
     "request": "latest",
-    "sqlite3": "*",
+    "restler": "^3.4.0",
     "sequelize": "*",
+    "sqlite3": "*",
     "xmldom": "^0.1.27",
     "xpath": "^0.0.27"
   },
