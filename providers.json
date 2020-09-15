@@ -80,7 +80,7 @@
             },
             {
                 "type": "highlightNegative",
-                "text": "dienstags Pizza-Ruhetag",
+                "text": "Dienstag Ruhetag",
                 "highlightDay": "tuesday"
             }
         ],
@@ -103,19 +103,6 @@
         "keywords": [
             "Café Museum",
             "Cafe Museum"
-        ]
-    },
-    {
-        "title": "Eiszeit Ravensburg",
-        "id": "eiszeit",
-        "logo": "eiszeit.png",
-        "phoneNumber": "0751 355 49 334",
-        "website": "eiszeit-rv.de",
-        "infos": [
-            "[Mittagstisch](https://www.eiszeit-rv.de/mittagstisch/#unser-mittagstisch) 8,80 €\n  * Buffet\n  * inklusive Wasser"
-        ],
-        "keywords": [
-            "Eiszeit"
         ]
     },
     {
