@@ -68,6 +68,7 @@ exports.parse = function () {
                 title: "Tagesessen"
             }
             for (let dish of dishes) {
+                if (dish.price == "") continue; 
                 const day = util.weekdays[dish.day];
                 if (!offers[day]) offers[day] = [];
                 const dish2 = {}
