@@ -31,8 +31,9 @@ exports.parse = function () {
                 const y = texts[i].top;
                 // decode text
                 const text = decodeURIComponent(texts[i].text);
+                console.log(x + ", " + y + ", " + text)
                 // get week day of text from y coordinate
-                const iDay = Math.floor((-y + 615) / (56 + 17));
+                const iDay = Math.floor((-y + 617) / (56 + 17));
                 if (iDay < 0 || iDay > 4) continue;
                 // get dish index (0 or 1) from x coordinate
                 const iDish = Math.floor((x - 120) / 140);;
@@ -41,7 +42,7 @@ exports.parse = function () {
                 const dish = dishes[iDay * nDishes + iDish];
                 // check if text is a price, a garnish and/or a additive
                 const isPrice = (x - 120) % 140 >= 110;
-                const isGarnish = (-y + 615) % (56 + 17) >= 56;
+                const isGarnish = (-y + 617) % (56 + 17) >= 56.05;
                 const isAdditive = text.slice(-2).match(/,/);
                 // insert information into current dish
                 if (isAdditive) continue;
