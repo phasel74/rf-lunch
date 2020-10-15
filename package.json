@@ -15,7 +15,9 @@
     "sequelize": "*",
     "sqlite3": "*",
     "xmldom": "latest",
-    "xpath": "latest"
+    "xpath": "latest",
+    "mysql": "latest",
+    "mysql2": "latest"
   },
   "engines": {
     "node": "12.x"

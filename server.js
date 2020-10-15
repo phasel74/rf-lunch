@@ -15,6 +15,7 @@ var Dishes;
 
 // setup a new database
 // using database credentials set in .env
+/*
 var sequelize = new Sequelize('database', process.env.DB_USER, process.env.DB_PASS, {
   host: '0.0.0.0',
   dialect: 'sqlite',
@@ -23,10 +24,18 @@ var sequelize = new Sequelize('database', process.env.DB_USER, process.env.DB_PA
     min: 0,
     idle: 10000
   },
+});
+  */
+
+//*
+var sequelize = new Sequelize('db54467', process.env.DB_USER, process.env.DB_PASS, {
+  host: 'mysql07.manitu.net',
+  dialect: 'mysql',
   // Security note: the database is saved to the file `database.sqlite` on the local filesystem. It's deliberately placed in the `.data` directory
   // which doesn't get copied if someone remixes the project.
-  storage: '.data/database.sqlite'
+  //storage: '.data/database.sqlite'
 });
+//*/
 
 // authenticate with the database
 sequelize.authenticate()
@@ -45,10 +54,10 @@ sequelize.authenticate()
         type: Sequelize.STRING//Sequelize.DATE
       },
       offers: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100000)
       },
       carte: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100000)
       }
     });
 
@@ -101,15 +110,10 @@ app.get('/api/providers', function (request, response) {
   response.sendFile(path.join(__dirname, 'providers.json'))
 });
 
-const dishesStrToObj = dishes => {
-  dishes.offers = JSON.parse(dishes.offers)
-  dishes.carte = JSON.parse(dishes.carte)
-  return dishes
-}
 
 app.get('/api/dishes/:name', function (request, response) {
   var name = request.params.name;
-
+  console.log("api call for dishes of " + name)
   // try to find dishes in database
   Dishes.findOne({ where: { id: name } })
     .then(dishesDb => {
@@ -117,10 +121,10 @@ app.get('/api/dishes/:name', function (request, response) {
         // check if dishes are up-to-date
         const now = new Date();
         const dateEnd = new Date(dishesDb.dateEnd)
-        if (now <= dateEnd) {
+        if (false && now <= dateEnd) {
           // return cached dishes
           console.log(name + ": use cached data")
-          response.json(dishesStrToObj(dishesDb))
+          response.json(dishesDb)
           return
         }
       }
@@ -128,6 +132,8 @@ app.get('/api/dishes/:name', function (request, response) {
       console.log(name + ": re-parse data")
       parser.parse(name)
       .then(dishesNew => {
+        console.log("new parsed dishes:")
+        console.log(dishesNew)
         // add id
         dishesNew.id = name
         // stringify objects @todo is there a better way to do that?
@@ -149,11 +155,18 @@ app.get('/api/dishes/:name', function (request, response) {
           return
         }
         // insert or update database value
+        /*
+        console.log("new dishes: ##############################################")
+        console.log(dishesNew)
+        */
         Dishes.upsert(dishesNew).then(() => {
           // get inserted/updated value from db again 
           // @todo is there a more efficient way?
           Dishes.findOne({ where: { id: name } }).then(dishes_ => {
-            response.json(dishesStrToObj(dishes_))
+            dishes_["offers"] = JSON.parse(dishes_["offers"])
+            dishes_["carte"] = JSON.parse(dishes_["carte"])
+            console.log(dishes_)
+            response.json(dishes_)
           })
           return
         })

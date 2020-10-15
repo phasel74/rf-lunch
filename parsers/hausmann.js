@@ -17,14 +17,14 @@ exports.parse = function () {
             //console.log(textfile);
 
             request.get(textfile, (err, res) => {
-                offers = parseBaeckereiHausmannHtml(res.body)
+                let offers = parseBaeckereiHausmannHtml(res.body)
                 // date
-                date = new Date(res.headers['last-modified'])
+                let date = new Date(res.headers['last-modified'])
                 nextMonday(date)
-                dateStart = date.toISOString()
-                date.setDate(date.getDate() + 4);
+                let dateStart = date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, '0') + '-' + date.getDate().toString().padStart(2, '0') //date.toISOString()
+                date.setDate(date.getDate() + 4); // @todo only date (not time)
                 date.setHours(23, 59, 59)
-                dateEnd = date.toISOString()
+                dateEnd = date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, '0') + '-' + date.getDate().toString().padStart(2, '0') //date.toISOString()
                 offers.dateStart = dateStart
                 offers.dateEnd = dateEnd
                 resolve({
@@ -56,7 +56,6 @@ function parseBaeckereiHausmannHtml(html) {
     console.log(nodes.length)
     // test
     for (let i = 0; i < nodes.length; ++i) {
-        //console.log("*********")
         let div1 = nodes[i].ownerElement
         let div2 = div1.childNodes[0]
         let div3 = div2.childNodes[0]
@@ -79,8 +78,9 @@ function parseBaeckereiHausmannHtml(html) {
                 days[iDay].dishes.push({ y: y, text: text.nodeValue })
             }
         } else {
-            for (let j = 0; j < div3.childNodes.length; j += 2) {
+            for (let j = 0; j < div3.childNodes.length; j += 1) {
                 let text = div3 && div3.childNodes ? div3.childNodes[j] : undefined
+                if (text.nodeValue == null) continue
                 days[iDay].prices.push({ y: y, text: text.nodeValue })
             }
         }

@@ -31,7 +31,6 @@ exports.parse = function () {
                 const y = texts[i].top;
                 // decode text
                 const text = decodeURIComponent(texts[i].text);
-                console.log(x + ", " + y + ", " + text)
                 // get week day of text from y coordinate
                 const iDay = Math.floor((-y + 617) / (56 + 17));
                 if (iDay < 0 || iDay > 4) continue;
@@ -65,12 +64,12 @@ exports.parse = function () {
             // filter 'Hurra Feiertag!!!' etc.
             dishes = dishes.filter(e => e.name.indexOf("!") < 0)
             // @todo create offers object above directly
-            offers = {
+            let offers = {
                 title: "Tagesessen"
             }
             for (let dish of dishes) {
                 if (dish.price == "") continue; 
-                const day = util.weekdays[dish.day];
+                const day = util.weekdays[dish.day]; 
                 if (!offers[day]) offers[day] = [];
                 const dish2 = {}
                 if (dish.name) dish2.name = dish.name;
